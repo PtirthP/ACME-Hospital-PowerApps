@@ -1,0 +1,103 @@
+"'Success Screen' As screen.'phoneLayout_Success_ver3.0'":
+    Fill: =RGBA(29, 29, 29, 1)
+    LoadingSpinnerColor: =RGBA(143, 80, 55, 1)
+
+    iconCircle1 As circle.Circle:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Fill: =RGBA(54, 176, 75, 1)
+        Height: =176
+        Width: =176
+        X: =232
+        Y: =354
+        ZIndex: =1
+
+    iconCheck1 As icon.Check:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =176
+        Icon: =Icon.Check
+        PaddingBottom: =Self.PaddingTop
+        PaddingLeft: =Self.PaddingTop
+        PaddingRight: =Self.PaddingTop
+        PaddingTop: =18
+        PressedFill: =RGBA(255, 255, 255, 0.3)
+        Width: =176
+        X: =232
+        Y: =354
+        ZIndex: =2
+
+    LblSuccessMsg1 As label:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Height: =152
+        Size: =27
+        Text: ="This edited patient information was successfully saved."
+        Width: =546
+        X: =56
+        Y: =554
+        ZIndex: =3
+
+    Label20_2 As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(143, 80, 55, 1)
+        Height: =88
+        Size: =21
+        Text: ="Patient Details"
+        Width: =640
+        ZIndex: =4
+
+    navbar_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =11
+
+        Icon6_5 As icon.Home:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(250, 215, 189, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.Home
+            OnSelect: =Navigate('Home Screen')
+            X: =80
+            Y: =1060
+            ZIndex: =7
+
+        Icon7_5 As icon.Medical:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(250, 215, 189, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.Search
+            OnSelect: =Navigate('Search for Patients')
+            X: =298
+            Y: =1060
+            ZIndex: =8
+
+        Rectangle4_5 As rectangle:
+            BorderColor: =RGBA(136, 160, 209, 1)
+            Fill: =RGBA(143, 80, 55, 1)
+            Height: =4
+            Width: =567
+            X: =46
+            Y: =1041
+            ZIndex: =9
+
+        Icon11_5 As icon.OptionsList:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(252, 231, 215, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.OptionsList
+            OnSelect: =Navigate('View Patient List')
+            X: =516
+            Y: =1060
+            ZIndex: =10
+

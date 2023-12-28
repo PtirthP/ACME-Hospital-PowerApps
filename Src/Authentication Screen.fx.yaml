@@ -1,0 +1,154 @@
+"'Authentication Screen' As screen":
+    LoadingSpinnerColor: =RGBA(143, 80, 55, 1)
+
+    lblAuthenticationACMEHospital As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(129, 72, 50, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =66
+        Size: =50
+        Text: ="ACME Hospital"
+        Width: =535
+        X: =67
+        Y: =240
+        ZIndex: =1
+
+    iconAuthenticationHospital As icon.Hospital:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(29, 29, 29, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =105
+        Icon: =Icon.Hospital
+        Width: =139
+        X: =253
+        Y: =116
+        ZIndex: =2
+
+    iconAuthenticationSettings As icon.Settings:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(29, 29, 29, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Height: =74
+        Icon: =Icon.Settings
+        Width: =69
+        X: =546
+        Y: =24
+        ZIndex: =3
+
+    Button1 As button:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        FontWeight: =FontWeight.Semibold
+        Height: =514
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =
+        OnSelect: =Navigate('MS Authenticator')
+        Size: =24
+        Text: =""
+        Width: =531
+        X: =55
+        Y: =356
+        ZIndex: =11
+
+    Authentication As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =11
+
+        Label1 As label:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(29, 29, 29, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =70
+            Size: =30
+            Text: ="Approve sign in Request"
+            Width: =560
+            X: =55
+            Y: =416
+            ZIndex: =4
+
+        Label1_1 As label:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(29, 29, 29, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =70
+            Size: =21
+            Text: =User().Email
+            Width: =560
+            X: =55
+            Y: =356
+            ZIndex: =5
+
+        Label1_2 As label:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(29, 29, 29, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =70
+            Size: =21
+            Text: ="Open your Authenticator app, enter the number shown to sign in"
+            Width: =560
+            X: =55
+            Y: =496
+            ZIndex: =6
+
+        Label2 As label:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(29, 29, 29, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =140
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =100
+            Text: ="421"
+            Width: =270
+            X: =212
+            Y: =603
+            ZIndex: =7
+
+        Label1_3 As label:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(29, 29, 29, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =70
+            Size: =21
+            Text: ="No numbers in your app? Make sure to upgrade to the latest version"
+            Width: =560
+            X: =55
+            Y: =782
+            ZIndex: =8
+
+        Label1_4 As label:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(0, 134, 208, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =32
+            Size: =15
+            Text: ="I can't use my Microsoft Authenticator app right now"
+            Width: =560
+            X: =55
+            Y: =892
+            ZIndex: =9
+
+        Label1_5 As label:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(0, 134, 208, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =32
+            Size: =15
+            Text: ="More information"
+            Width: =222
+            X: =55
+            Y: =936
+            ZIndex: =10
+

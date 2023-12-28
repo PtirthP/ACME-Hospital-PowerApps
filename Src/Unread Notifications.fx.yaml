@@ -1,0 +1,347 @@
+"'Unread Notifications' As screen":
+    Fill: =RGBA(29, 29, 29, 1)
+    LoadingSpinnerColor: =RGBA(143, 80, 55, 1)
+
+    iconUnreadNotificationHome As icon.Home:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(250, 215, 189, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Home Screen')
+        X: =80
+        Y: =1060
+        ZIndex: =1
+
+    iconUnreadNotificationSearchBar As icon.Medical:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(250, 215, 189, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.Search
+        OnSelect: =Navigate('Search for Patients')
+        X: =298
+        Y: =1060
+        ZIndex: =2
+
+    recUnreadNotificationVavBar As rectangle:
+        BorderColor: =RGBA(136, 160, 209, 1)
+        Fill: =RGBA(143, 80, 55, 1)
+        Height: =4
+        Width: =567
+        X: =46
+        Y: =1041
+        ZIndex: =3
+
+    iconUnreadNotificationOptionList As icon.OptionsList:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(250, 215, 189, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.OptionsList
+        OnSelect: =Navigate('View Patient List')
+        X: =516
+        Y: =1060
+        ZIndex: =4
+
+    "Gallery1_2 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Default: =Blank()
+        DelayItemLoading: =true
+        Height: =953
+        Items: =Filter(Patient, Status.Value = "New", Title="Admit")
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =159
+        Y: =88
+        ZIndex: =6
+
+        Title1_4 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =26
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.'Full Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =224
+            X: =103
+            Y: =27
+            ZIndex: =2
+
+        Subtitle1_2 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =54
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: |
+                ="Admit date: " & ThisItem.Date & Char(10) & "Time: " &
+                
+                If(
+                    Value(
+                        Left(
+                            ThisItem.Time,
+                            2
+                        )
+                    ) >= 12,
+                    Text(
+                        If(
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            ) > 12,
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            ) - 12,
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            )
+                        ),
+                        "0"
+                    ) & ":" & Right(
+                        ThisItem.Time,
+                        2
+                    ) & " PM",
+                    Text(
+                        If(
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            ) = 0,
+                            "12",
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            )
+                        ),
+                        "0"
+                    ) & ":" & Right(
+                        ThisItem.Time,
+                        2
+                    ) & " AM"
+                )
+            VerticalAlign: =VerticalAlign.Top
+            Width: =231
+            X: =103
+            Y: =59
+            ZIndex: =3
+
+        Separator1_2 As rectangle:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =4
+
+        Rectangle2_4 As rectangle:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Fill: =RGBA(250, 215, 189, 1)
+            Height: =Parent.TemplateHeight - Separator1_2.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =5
+
+        Subtitle1_3 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =24
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: |-
+                =" Phone: " & ThisItem.'Phone Number' 
+            VerticalAlign: =VerticalAlign.Top
+            Width: =208
+            X: =96
+            Y: =113
+            ZIndex: =6
+
+        Icon24_2 As icon.Person:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(250, 215, 189, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.Person
+            OnSelect: =Select(Parent)
+            X: =21
+            Y: =27
+            ZIndex: =7
+
+        ConMarkRead As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(129, 72, 50, 1)
+            Height: =92
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Width: =92
+            X: =537
+            Y: =29
+            ZIndex: =8
+
+            Label7 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(0, 0, 0, 0)
+                BorderStyle: =BorderStyle.None
+                BorderThickness: =2
+                Color: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FocusedBorderThickness: =4
+                Font: =Font.'Segoe UI'
+                Height: =30
+                OnSelect: =
+                Size: =10
+                Text: ="Mark as read"
+                Width: =91
+                Y: =62
+                ZIndex: =1
+
+            iconview As icon.ChevronRight:
+                AccessibleLabel: =Self.Tooltip
+                Color: =RGBA(255, 255, 255, 1)
+                Height: =51
+                Icon: =Icon.View
+                OnSelect: =
+                Tooltip: ="View item details"
+                Width: =51
+                X: =19
+                Y: =11
+                ZIndex: =2
+
+        btnMarkRead As button:
+            BorderColor: =RGBA(0, 0, 0, 0)
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(0, 0, 0, 0)
+            FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+            Font: =Font.'Segoe UI'
+            FontWeight: =FontWeight.Semibold
+            Height: =92
+            HoverBorderColor: =RGBA(0, 0, 0, 0)
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =RGBA(227, 218, 218, 0.52)
+            OnSelect: |-
+                =Patch(Patient, ThisItem, {Status: {Value: "Seen"}})
+            PressedBorderColor: =
+            PressedColor: =RGBA(255, 255, 255, 1)
+            PressedFill: =RGBA(235, 225, 225, 0.55)
+            RadiusBottomLeft: =20
+            RadiusBottomRight: =20
+            RadiusTopLeft: =20
+            RadiusTopRight: =20
+            Size: =24
+            Text: =""
+            Width: =92
+            X: =537
+            Y: =29
+            ZIndex: =9
+
+        Button2 As button:
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Fill: =RGBA(143, 80, 55, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =35
+            HoverColor: =RGBA(255, 255, 255, 1)
+            HoverFill: =ColorFade(RGBA(143, 80, 55, 1), -20%)
+            OnSelect: |-
+                =Set(SelectedPatient, Gallery1_2.Selected);
+                ViewForm(formPatientDetails);
+                Navigate('View Patient Details', ScreenTransition.Fade);
+                
+                Patch(
+                   PatientAccessLog,
+                   Defaults(PatientAccessLog),
+                   {
+                      'Patient Name': ThisItem.'Full Name',
+                      'Access Email': User().Email,
+                      'Access Name': User().FullName,
+                      'Access Time': Text(Now(), "[$-en-US]mmmm d, yyyy - h:mm:ss") & " " & Text(Now(), "AM/PM")
+                   }
+                );
+                //Navigate('View Patient Detail - Unread Notification')
+            Size: =10
+            Text: ="View Patient Details"
+            Width: =148
+            X: =372
+            Y: =102
+            ZIndex: =10
+
+    lbUnreadNotification As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Height: =70
+        Size: =21
+        Text: ="No new notification to show"
+        Visible: =If(Gallery1_2.AllItemsCount = 0, true, false)
+        Width: =560
+        X: =40
+        Y: =233
+        ZIndex: =7
+
+    "'Unread Notification Header' As group":
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =12
+
+        lblUnreadNotification As label:
+            Align: =Align.Center
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Fill: =RGBA(143, 80, 55, 1)
+            Height: =87
+            Size: =21
+            Text: ="Unread Notification"
+            Width: =640
+            ZIndex: =8
+
+        iconUnreadNotificationBack As icon.BackArrow:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(250, 215, 189, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.BackArrow
+            OnSelect: =Back()
+            X: =16
+            Y: =11
+            ZIndex: =10
+

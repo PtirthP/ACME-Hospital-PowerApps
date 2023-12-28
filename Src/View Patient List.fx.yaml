@@ -1,0 +1,297 @@
+"'View Patient List' As screen":
+    Fill: =RGBA(29, 29, 29, 1)
+    LoadingSpinnerColor: =RGBA(143, 80, 55, 1)
+
+    Icon6_4 As icon.Home:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(250, 215, 189, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.Home
+        OnSelect: =Navigate('Home Screen')
+        X: =80
+        Y: =1060
+        ZIndex: =3
+
+    Icon7_4 As icon.Medical:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(250, 215, 189, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.Search
+        OnSelect: =Navigate('Search for Patients')
+        X: =298
+        Y: =1060
+        ZIndex: =4
+
+    Rectangle4_4 As rectangle:
+        BorderColor: =RGBA(136, 160, 209, 1)
+        Fill: =RGBA(143, 80, 55, 1)
+        Height: =4
+        Width: =567
+        X: =46
+        Y: =1041
+        ZIndex: =6
+
+    Icon11_4 As icon.OptionsList:
+        BorderColor: =RGBA(250, 215, 189, 1)
+        Color: =RGBA(129, 72, 50, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.OptionsList
+        OnSelect: =Navigate('View Patient List')
+        X: =516
+        Y: =1060
+        ZIndex: =7
+
+    "Gallery1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+        BorderColor: =RGBA(250, 215, 189, 1)
+        DelayItemLoading: =true
+        Height: =953
+        Items: =Filter(Patient,Title="Admit")
+        Layout: =Layout.Vertical
+        LoadingSpinner: =LoadingSpinner.Data
+        TemplatePadding: =0
+        TemplateSize: =118
+        Y: =88
+        ZIndex: =16
+
+        Title1 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =26
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.'Full Name'
+            VerticalAlign: =VerticalAlign.Top
+            Width: =224
+            X: =103
+            Y: =27
+            ZIndex: =2
+
+        Subtitle1 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =24
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: |
+                =ThisItem.Date & " - " &
+                
+                If(
+                    Value(
+                        Left(
+                            ThisItem.Time,
+                            2
+                        )
+                    ) >= 12,
+                    Text(
+                        If(
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            ) > 12,
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            ) - 12,
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            )
+                        ),
+                        "0"
+                    ) & ":" & Right(
+                        ThisItem.Time,
+                        2
+                    ) & " PM",
+                    Text(
+                        If(
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            ) = 0,
+                            "12",
+                            Value(
+                                Left(
+                                    ThisItem.Time,
+                                    2
+                                )
+                            )
+                        ),
+                        "0"
+                    ) & ":" & Right(
+                        ThisItem.Time,
+                        2
+                    ) & " AM"
+                )
+            VerticalAlign: =VerticalAlign.Top
+            Width: =243
+            X: =Title1.X
+            Y: =62
+            ZIndex: =3
+
+        NextArrow1 As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            Color: =RGBA(166, 166, 166, 1)
+            Height: =50
+            Icon: =Icon.ChevronRight
+            OnSelect: |-
+                =Set(SelectedPatient, Gallery1.Selected);
+                ViewForm(formPatientDetails);
+                Navigate('View Patient Details', ScreenTransition.Fade);
+                
+                Patch(
+                   PatientAccessLog,
+                   Defaults(PatientAccessLog),
+                   {
+                      'Patient Name': ThisItem.'Full Name',
+                      'Access Email': User().Email,
+                      'Access Name': User().FullName,
+                      'Access Time': Text(Now(), "[$-en-US]mmmm d, yyyy - h:mm:ss") & " " & Text(Now(), "AM/PM")
+                   }
+                );
+                //Navigate('View Patient Detail - Patient List', ScreenTransition.Fade)
+            PaddingBottom: =16
+            PaddingLeft: =16
+            PaddingRight: =16
+            PaddingTop: =16
+            Tooltip: ="View item details"
+            Width: =50
+            X: =Parent.TemplateWidth - Self.Width - 12
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =4
+
+        Separator1 As rectangle:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =8
+            OnSelect: =Select(Parent)
+            Width: =Parent.TemplateWidth
+            Y: =Parent.TemplateHeight - Self.Height
+            ZIndex: =5
+
+        Rectangle2 As rectangle:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Fill: =RGBA(250, 215, 189, 1)
+            Height: =Parent.TemplateHeight - Separator1.Height
+            OnSelect: =Select(Parent)
+            Visible: =ThisItem.IsSelected
+            Width: =4
+            ZIndex: =6
+
+        Subtitle1_1 As label:
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+            Height: =24
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: |-
+                =" Phone: " & ThisItem.'Phone Number' 
+            VerticalAlign: =VerticalAlign.Top
+            Width: =208
+            X: =370
+            Y: =62
+            ZIndex: =7
+
+        Icon24 As icon.Person:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(250, 215, 189, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.Person
+            OnSelect: =Select(Parent)
+            X: =21
+            Y: =27
+            ZIndex: =8
+
+    HeaderPatientList As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =18
+
+        Rectangle1 As rectangle:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Fill: =RGBA(143, 80, 55, 1)
+            Height: =88
+            Width: =640
+            ZIndex: =2
+
+        Icon21 As icon.BackArrow:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(250, 215, 189, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Icon: =Icon.BackArrow
+            OnSelect: =Back()
+            X: =16
+            Y: =11
+            ZIndex: =9
+
+        Icon5 As icon.Reload:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(250, 215, 189, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =88
+            Icon: =Icon.Reload
+            OnSelect: =Refresh(Patient)
+            PaddingBottom: =22
+            PaddingLeft: =22
+            PaddingRight: =22
+            PaddingTop: =22
+            Width: =88
+            X: =464
+            ZIndex: =10
+
+        Icon22 As icon.ArrowsUpDown:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(250, 215, 189, 1)
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledColor: =RGBA(244, 244, 244, 1)
+            Height: =88
+            Icon: =Icon.Sort
+            PaddingBottom: =22
+            PaddingLeft: =22
+            PaddingRight: =22
+            PaddingTop: =22
+            Width: =88
+            X: =552
+            ZIndex: =12
+
+        Label24 As label:
+            BorderColor: =RGBA(250, 215, 189, 1)
+            Color: =RGBA(255, 255, 255, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Height: =88
+            PaddingLeft: =20
+            Size: =25
+            Text: ="Patient list"
+            Width: =401
+            X: =80
+            ZIndex: =17
+
