@@ -1,0 +1,57 @@
+{
+  "3fc04c9b-3f75-4362-bff3-c54501c3d8d0": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://pennstateoffice365.sharepoint.com/sites/IST421788": {
+        "dataSources": {
+          "OutOfNetworkAppFeedback": {
+            "tableName": "543fbd7d-71dd-479e-a4b8-e06650933bf0"
+          },
+          "Patient": {
+            "tableName": "a7f84af1-35cd-4cfb-850b-0607760e18bd"
+          },
+          "PatientAccessLog": {
+            "tableName": "7485ccb7-c244-4ac3-b66f-105e2b90ef6c"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Patient",
+      "PatientAccessLog",
+      "OutOfNetworkAppFeedback"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "3fc04c9b-3f75-4362-bff3-c54501c3d8d0"
+  },
+  "65bc0657-d1a3-46cc-a7df-64e331d523b6": {
+    "appActions": [],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Users",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/office365users/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365users",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Users"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "65bc0657-d1a3-46cc-a7df-64e331d523b6"
+  }
+}

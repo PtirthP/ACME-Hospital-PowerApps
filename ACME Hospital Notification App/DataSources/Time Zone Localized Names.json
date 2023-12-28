@@ -1,0 +1,39 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "timezonelocalizednames",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "timezonelocalizedname",
+    "MaxGetRowsCount": 500,
+    "Name": "Time Zone Localized Names",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "cultureid": "Culture",
+      "daylightname": "Daylight Name",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "standardname": "Standard Name",
+      "timezonedefinitionid": "Time Zone Definition",
+      "timezonelocalizednameid": "Time Zone Localized Name",
+      "userinterfacename": "User Interface Name",
+      "versionnumber": "VersionNumber"
+    },
+    "PreferredName": "Time Zone Localized Names",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "Time Zone Localized Names (Views)",
+    "Name": "_timezonelocalizedname_views",
+    "RelatedEntityName": "Time Zone Localized Names",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "61ed9a76-0657-498f-b781-fd4cfc3d4163": "All Time Zone Localized Names"
+    }
+  }
+]
